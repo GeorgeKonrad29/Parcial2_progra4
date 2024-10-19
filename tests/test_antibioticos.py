@@ -20,7 +20,6 @@ class TestAntibioticos(unittest.TestCase):
     
     def test_getDosis(self):
         self.assertEqual(self.antibiotico.getDosis, 20)
-        
     def test_getEspecie(self):
         self.assertEqual(self.antibiotico.getEspecie, "perro")
 

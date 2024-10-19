@@ -36,3 +36,6 @@ class TestClientes(unittest.TestCase):
         self.cliente.addFactura(facturas[1])
         self.cliente.addFactura(facturas[2])
         self.assertEqual(self.cliente.cantidadFacturas(), 3)
+
+if __name__ == '__main__':
+    unittest.main()
