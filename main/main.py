@@ -7,4 +7,7 @@ import model.clientes  as cl
 import ui.ui as ui
 
 def main():
-    ui.menu()
+    queHacer=0
+    queHacer=ui.menu()
+    if queHacer == 1:
+        cliente = 

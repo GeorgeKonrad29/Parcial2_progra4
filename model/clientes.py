@@ -29,9 +29,5 @@ class Clientes():
       
     def cantidadFacturas(self):
         return len(self.__facturas)
-    
-    def imprimirFacturas(self):
-        for factura in self.__facturas:
-            print(factura.getNombre, factura.getPrecio)
 
     
