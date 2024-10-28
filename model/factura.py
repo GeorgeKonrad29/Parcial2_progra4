@@ -10,7 +10,6 @@ from model.controlesPlagas import ControlesPlagas
 class Factura():
     def __init__(self, fecha: str):
         self.__fecha = fecha
-        self.__precioTotal = 0
         self.__productos = []
 
     def __init__(self, fecha: str, productos: list):
