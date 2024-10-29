@@ -34,3 +34,8 @@ class CrudFactura():
             productos=factura.getProductos()
             for producto in productos:
                 print(producto.getNombre(),producto.getPrecio())
+
+    @staticmethod
+    def venderProducto(factura,producto):
+        factura.addProducto(producto)
+        return factura

@@ -29,7 +29,7 @@ class CRUDClientes():
         for cliente in listaClientes:
             if cliente.getCedula == cedula:
                 return cliente
-        return None
+        return False
     
     @staticmethod
     def obtener_facturas_cliente(cliente):
