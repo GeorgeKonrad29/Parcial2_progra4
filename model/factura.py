@@ -8,10 +8,10 @@ from model.fertilizantes import Fertilizantes
 from model.controlesPlagas import ControlesPlagas
 
 class Factura():
-    def __init__(self, fecha: str):
-        self.__fecha = fecha
-        self.__productos = []
 
+    def __init__(self, fecha: str, productos: list=None):
+        self.__fecha = fecha
+        self.__productos = productos if productos != None else []
     
 
     @property
