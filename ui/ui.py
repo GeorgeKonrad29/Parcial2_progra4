@@ -1,6 +1,6 @@
 
 
 def buscar():
-    print("buscar por cedula?")
+    print("cual es su cedula?")
 
-    print("")
+    return input()

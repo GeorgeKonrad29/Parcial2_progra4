@@ -10,7 +10,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
  
 from model.controlesPlagas import ControlesPlagas
 
-class CRUDControlPlagas():
+class CrudControlPlagas():
     @staticmethod
     def create_controlPlagas():
         controlPlagas = ControlesPlagas("1234", "ControlPlagas1", 100.0, 10,15)

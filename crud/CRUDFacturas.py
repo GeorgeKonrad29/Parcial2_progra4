@@ -30,10 +30,10 @@ class CrudFactura():
     def listarFacturasCliente(listaFacturas):
         
         for factura in listaFacturas:
-            print(factura.getFecha())
-            productos=factura.getProductos()
+            print(factura.getFecha)
+            productos=factura.getProductos
             for producto in productos:
-                print(producto.getNombre(),producto.getPrecio())
+                print(producto.getNombre,producto.getPrecio)
 
     @staticmethod
     def venderProducto(factura,producto):

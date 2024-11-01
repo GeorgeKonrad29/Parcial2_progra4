@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from model.factura import Factura
 
 class Clientes():
-    def __init__(self, nombre, cedula):
+    def __init__(self, nombre:str, cedula:str):
         self.__nombre = nombre
         self.__cedula = cedula
         self.__facturas = []

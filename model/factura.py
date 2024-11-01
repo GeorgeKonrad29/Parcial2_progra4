@@ -12,9 +12,7 @@ class Factura():
         self.__fecha = fecha
         self.__productos = []
 
-    def __init__(self, fecha: str, productos: list):
-        self.__fecha = fecha
-        self.__productos = productos
+    
 
     @property
     def getFecha(self):
@@ -29,7 +27,11 @@ class Factura():
     
     @property
     def getProductos(self):
-        return self.__productos
+        if self.__productos == None:
+            self.__productos = [0]
+            return self.__productos
+        else:
+            return self.__productos
     
     def getTodosLosPrecios(self):
         resultado = []

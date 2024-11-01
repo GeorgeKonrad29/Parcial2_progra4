@@ -7,10 +7,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from model.clientes import Clientes
 from model.factura import Factura
 
-class CRUDClientes():
+class CrudClientes():
     @staticmethod
     def create_cliente():
-        cliente = Clientes("Cliente1", "123456789")
+        cliente = Clientes("Cliente0", "1234")
         return cliente
     
     @staticmethod
@@ -32,5 +32,5 @@ class CRUDClientes():
         return False
     
     @staticmethod
-    def obtener_facturas_cliente(cliente):
+    def obtener_facturas_cliente(cliente:Clientes):
         return cliente.getFacturas
