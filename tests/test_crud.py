@@ -1,6 +1,6 @@
 import sys
 import os
-
+import unittest
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
  
 from model.clientes  import Clientes
@@ -11,8 +11,9 @@ from crud.CRUDControlPlagas import CrudControlPlagas
 from crud.CRUDFertilizantes import CrudFertilizantes
 from crud.CRUDAntibioticos import CrudAntibioticos
 
-class TestCrud():
+class TestCrud(unittest.TestCase):
     def test_crud(self):
+        print("test_crud")
         crudC = CrudClientes()
         crudF = CrudFactura()
         crudP = CrudControlPlagas()
@@ -20,7 +21,7 @@ class TestCrud():
         crudA = CrudAntibioticos()
         clientes = []
         cedular=0
-        cedula=1234
+        cedula="1234"
         stockAntibioticos = crudA.create_lista_antibioticos()
         stockFertilizantes = crudFer.create_lista_fertilizantes()
         stockControlPlagas = crudP.create_lista_controlPlagas()

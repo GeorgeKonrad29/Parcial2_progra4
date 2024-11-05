@@ -32,5 +32,6 @@ class CrudClientes():
         return False
     
     @staticmethod
-    def obtener_facturas_cliente(cliente:Clientes):
-        return cliente.getFacturas
+    def obtener_facturas_cliente(cliente):
+        facturas= cliente.getFacturas
+        return facturas
