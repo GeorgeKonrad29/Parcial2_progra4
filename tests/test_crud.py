@@ -20,7 +20,7 @@ class TestCrud(unittest.TestCase):
         crudFer = CrudFertilizantes()
         crudA = CrudAntibioticos()
         clientes = []
-        cedular=0
+        cedula=0
         cedula="1234"
         stockAntibioticos = crudA.create_lista_antibioticos()
         stockFertilizantes = crudFer.create_lista_fertilizantes()
@@ -39,4 +39,5 @@ class TestCrud(unittest.TestCase):
         facturas = crudC.obtener_facturas_cliente(cliente)
         crudF.listarFacturasCliente(facturas)
 
-            
+if __name__ == '__main__':
+    unittest.main()
