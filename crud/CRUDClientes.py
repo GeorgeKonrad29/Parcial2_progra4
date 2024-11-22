@@ -35,3 +35,10 @@ class CrudClientes():
     def obtener_facturas_cliente(cliente):
         facturas= cliente.getFacturas
         return facturas
+    
+    @staticmethod
+    def vender_producto(producto,cliente):
+        factura = Factura()
+        factura = factura.venderProducto(producto)
+        cliente.addFactura(factura)
+        return cliente

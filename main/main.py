@@ -4,7 +4,6 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
  
 from model.clientes  import Clientes
-import ui.ui as ui
 from crud.CRUDClientes import CrudClientes
 from crud.CRUDFacturas import CrudFactura
 from crud.CRUDControlPlagas import CrudControlPlagas

@@ -45,5 +45,4 @@ if __name__ == "__main__":
     cliente= CrudClientes.create_cliente()
     print(cliente.getNombre)
     clientes=[cliente]
-    mostrarCliente([], clientes,"1234")
 
