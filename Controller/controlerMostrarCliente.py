@@ -10,3 +10,6 @@ class controlerMostrarCliente():
     def buscarPorCedula(self,clientes,cedula):
         cliente = CrudClientes.buscar_por_cedula(clientes,cedula)
         return cliente
+    def obtenerFacturasCliente(self,cliente):
+        facturas = CrudClientes.obtener_facturas_cliente(cliente)
+        return facturas

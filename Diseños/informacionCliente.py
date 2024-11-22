@@ -39,16 +39,6 @@ class Ui_Form(object):
         self.label_2.setText("Informacion del cliente")
         self.label_2.setText(f"Nombre: {cliente.getNombre}\nCedula: {cliente.getCedula}" )
 
-def mostrarCliente(inventarios, clientes, cedula):
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    cliente = controlerMostrarCliente().buscarPorCedula(clientes, cedula)
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    if cliente:
-        ui.montar_informacion(cliente)
-    Form.show()
-    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     import sys
