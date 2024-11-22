@@ -1,3 +1,10 @@
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from model.clientes import Clientes
+from crud.CRUDClientes import CrudClientes
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -26,12 +33,23 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label.setText(_translate("Form", "Cliente"))
         self.label_2.setText(_translate("Form", "Informacion del cliente"))
+    
+    def montar_informacion(self, cliente):
+        self.label_2.setText("Informacion del cliente")
+        self.label_2.setText(f"Nombre: {cliente.getNombre}\nCedula: {cliente.getCedula}" )
 
-if __name__ == "__main__":
-    import sys
+def mostrarCliente(inventarios, clientes):
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form)
+    ui.montar_informacion(cliente)
     Form.show()
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    import sys
+    cliente= CrudClientes.create_cliente()
+    print(cliente.getNombre)
+    mostrarCliente([], cliente)
+
