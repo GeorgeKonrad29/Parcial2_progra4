@@ -11,6 +11,7 @@ from Diseños.informacionCliente import Ui_Form as InformacionClienteWindow
 from Diseños.Productos import Ui_Form as ProductosWindow
 from Diseños.Antibioticos import Ui_Form as AntibioticosWindow
 from Diseños.ProductosControl import Ui_Form as ProductosControlWindow
+from controller.controllerVenta import controlerVenta
 from controller.controlerMostrarCliente import controlerMostrarCliente
 from model.factura import *
 from model.clientes import *
@@ -37,17 +38,19 @@ class InformacionCliente(QtWidgets.QMainWindow, InformacionClienteWindow):
     def __init__(self, cliente):
         super().__init__()
         self.setupUi(self)
-        self.montar_informacion(cliente)
-    def montar_informacion(self, cliente):
-        self.label_2.setText("Informacion del cliente")
-        self.label_2.setText(f"Nombre: {cliente.getNombre}\nCedula: {cliente.getCedula}" )
-        facturas = controlerMostrarCliente().obtenerFacturasCliente(cliente)
-        for factura in facturas:
-            self.label_2.setText(f"Fecha: {factura.getFecha}\n")
+        texto= self.informacionCliente(cliente)
+        self.label_2.setText(texto)
+    def informacionCliente(self, cliente):
+        texto=""
+        texto= "Informacion del cliente\n"
+        texto+= f"Nombre: {cliente.getNombre}\nCedula: {cliente.getCedula}\n"
+        texto+= "Facturas:\n"
+        for factura in cliente.getFacturas:
+            texto+= f"{factura.getFecha}\n"
+            texto+= "Productos:\n"
             for producto in factura.getProductos:
-                self.label_2.setText(f"{producto.getNombre} - ${producto.getPrecio}\n")
-            self.label_2.setText("\n")
-        self.show()
+                texto+= f"{producto.getNombre}\n"
+        return texto
 class BuscarCliente(QtWidgets.QMainWindow, BuscarClienteWindow):
     def __init__(self, main_window):
 
@@ -108,12 +111,25 @@ class ProductosControlWin(QtWidgets.QMainWindow, ProductosControlWindow):
         self.pushButton.clicked.connect(self.comprar_producto_control)
         self.main_window = main_window
     def comprar_producto_control(self):
+        encontrado = False
+        enInventario = False
         if self.lineEdit.text() and self.lineEdit_2.text():
-
-                for producto in self.main_window.inventario:
-                    if producto.getNombre == self.lineEdit_2.text():
-                        QtWidgets.QMessageBox.information(self, "Comprado", f"Producto {producto.getNombre} comprado")
-                        print(f"Producto {producto.getNombre} comprado")
+            for cliente_index,cliente in enumerate(self.main_window.clientes):
+                if cliente.getCedula == self.lineEdit.text():
+                    encontrado = True
+                    for producto in self.main_window.inventario:
+                        if producto.getNombre == self.lineEdit_2.text():
+                            QtWidgets.QMessageBox.information(self, "Comprado", f"Producto {producto.getNombre} comprado")
+                            print(f"Producto {producto.getNombre} comprado")
+                            enInventario = True
+                            cliente2 = controlerVenta().venderProducto(producto, cliente)
+                            self.main_window.clientes[cliente_index] = cliente2
+                            print(self.main_window.clientes[cliente_index].getNombre)
+                            break
+                    if not enInventario:
+                        QtWidgets.QMessageBox.warning(self, "Error", "Producto no encontrado")
+            if not encontrado:
+                QtWidgets.QMessageBox.warning(self, "Error", "Cliente no encontrado")
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Por favor, ingrese todos los campos")
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):

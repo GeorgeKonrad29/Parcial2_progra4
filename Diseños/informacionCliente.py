@@ -20,7 +20,7 @@ class Ui_Form(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(140, 110, 221, 51))
+        self.label_2.setGeometry(QtCore.QRect(140, 110, 221, 251))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_2.setFont(font)
