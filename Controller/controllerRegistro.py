@@ -10,8 +10,10 @@ from model.clientes import *
 
 class RegistroCliente(QtWidgets.QMainWindow, RegistroClienteWindow):
     
-    def __init__(self, main_window):
+    def __init__(self, main_window, inventario: list =[],clientes: list = []):
         super().__init__()
+        self.inventario = inventario
+        self.clientes = clientes
         self.setupUi(self)
         self.pushButton.clicked.connect(self.guardar_cliente)
         self.main_window = main_window  
@@ -30,11 +32,12 @@ class RegistroCliente(QtWidgets.QMainWindow, RegistroClienteWindow):
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     
-    def __init__(self):
+    def __init__(self, inventario: list = [], clientes: list = []):
         super().__init__()
+        self.inventario = inventario
+        self.clientes = clientes
         self.setupUi(self)
         self.toolButton_2.clicked.connect(self.registrar_cliente)
-        self.clientes = []  
 
     def registrar_cliente(self):
         self.registro_cliente_window = RegistroCliente(self)  
