@@ -53,6 +53,5 @@ class InformacionClienteApp(QtWidgets.QMainWindow, interfazPrincipal.Ui_MainWind
         super(InformacionClienteApp, self).__init__(*args, **kwargs)
         self.setupUi(self)
         self.controller = controller
-        # Aquí puedes usar self.controller.inventarios y self.controller.clientes
         print("Inventarios:", self.controller.inventarios)
         print("Clientes:", self.controller.clientes)
