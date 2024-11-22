@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from model.clientes import Clientes
 from crud.CRUDClientes import CrudClientes
 from PyQt5 import QtCore, QtGui, QtWidgets
+from controller.controlerMostrarCliente import controlerMostrarCliente
 
 
 class Ui_Form(object):
@@ -38,12 +39,14 @@ class Ui_Form(object):
         self.label_2.setText("Informacion del cliente")
         self.label_2.setText(f"Nombre: {cliente.getNombre}\nCedula: {cliente.getCedula}" )
 
-def mostrarCliente(inventarios, clientes):
+def mostrarCliente(inventarios, clientes, cedula):
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
+    cliente = controlerMostrarCliente().buscarPorCedula(clientes, cedula)
     ui = Ui_Form()
     ui.setupUi(Form)
-    ui.montar_informacion(cliente)
+    if cliente:
+        ui.montar_informacion(cliente)
     Form.show()
     sys.exit(app.exec_())
 
@@ -51,5 +54,6 @@ if __name__ == "__main__":
     import sys
     cliente= CrudClientes.create_cliente()
     print(cliente.getNombre)
-    mostrarCliente([], cliente)
+    clientes=[cliente]
+    mostrarCliente([], clientes,"1234")
 
